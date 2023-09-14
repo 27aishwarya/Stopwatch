@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STOPWATCH</title>
+<style>
+
+    *{
+        margin:0;
+        padding:0;
+        box-sizing: border-box;
+        overflow : hidden;
+
+    }
+    .container{
+        display:flex;
+        justify-content: center;
+        align-items:center;
+        flex-direction:column;
+        background-image:url(back.jpg);
+        background-position: center;
+        background-size:cover;
+        width:100%;
+       margin : auto;
+       min-height : 100vh;
+       max-height: 200vh;
+
+    }
+    .button{
+        display:flex;
+        justify-content: center;
+        align-items:center;
+    }
+     h1{
+        font-size:100px;
+        padding:20px;
+        color:black;
+        margin-left:23px;
+        
+    }
+    .button .img1{
+        height:95px;
+        width:95px; 
+        border : 8px solid white;
+        
+        
+       }
+       .button .img2{
+        height:120px;
+        width:120px;
+       
+       
+        
+       }
+       .button .img3{
+        height:100px;
+        width:100px;
+     
+       
+        
+       }
+       .img1, .img2, .img3{
+            cursor:pointer;
+            margin : 2px;
+        
+            border-radius : 50%;
+       }
+
+       @media only screen and (max-width: 500px) {
+  h1 {
+    font-size:70px;
+
+  }
+  .img1, .img2,.img3 {
+    width : 70px;
+    height : 70px;
+  }
+}
+      
+    
+      
+     
+    
+       
+    
+</style>
+</head>
+<body>
+    <div class="container">
+
+    
+        
+        <h1 id="displayTime">00:00:00</h1>
+        
+
+        <div class="button">
+            <img src="stop.png" onclick="watchStop()" class = "img1">
+            <img src="symbol.jpg" onclick="watchStart()" class = "img2">
+            <img  src = 'symbol1.jpeg'  onclick="watchReset()" class = "img3">
+
+
+        </div>
+    </div>
+    <script>
+        // let [seconds, minutes, hours] = [0,0,0];
+        // let displayTime = document.getElementById("displayTime");
+        // let timer = null;
+
+        // function stopwatch(){
+        //     seconds++;
+        //     if (seconds == 60){
+        //         seconds=0;
+        //         minutes++;
+        //         if(minutes == 60){
+        //             minutes = 0;
+        //             hours++;
+
+        //         }    
+        //     }                                 
+        //     let h = hours < 10 ? "0" + hours : hours;
+        //     let m = minutes < 10 ? "0" + minutes : minutes;
+        //     let s = seconds < 10 ? "0" + seconds : seconds;
+
+        //     displayTime.innerHTML = h + ":" + m + ":" + s;  
+            
+        // }
+        
+        // function watchStart(){
+               
+        //     if(timer!==null)    
+        //     {
+        //         clearInterval(timer); 
+        //     }
+        //     timer = setInterval(stopwatch,1000); 
+        //     console.log(timer)
+        // }
+
+        // function watchStop(){
+        //     clearInterval(timer);
+        //     console.log(timer) 
+        // }
+
+        // function watchReset(){
+        
+        //     clearInterval(timer);
+        //     [seconds,minutes,hours] = [0,0,0];
+        //     displayTime.innerHTML = "00:00:00"; 
+
+        // }
+
+        let [seconds, minutes, hours] = [0,0,0];
+        let displayTime = document.getElementById("displayTime");
+        let timer = null;
+
+        function stopwatch(){
+            seconds++;
+            if(seconds == 60){
+                seconds=0;
+                minutes++;
+                if(minutes == 60){
+                    minutes = 0;
+                    hours++;
+                }
+            }
+
+            let h = hours < 10 ? "0" + hours : hours;
+            let m = minutes < 10 ? "0" + minutes : minutes;
+            let s = seconds < 10 ? "0" + seconds: seconds;
+
+            displayTime.innerHTML = h + ":" + m + ":" + s;
+        }
+
+        function watchStart(){
+            if(timer!== null){
+                clearInterval(timer);
+            }
+            timer = setInterval(stopwatch, 1000);
+        }
+        function watchStop(){
+            clearInterval(timer);
+        }
+        function watchReset(){
+            clearInterval(timer);
+            [seconds,minutes,hours ]=[0,0,0];
+            displayTime.innerHTML = "00:00:00";
+        }
+
+        
+
+    </script>
+   
+    
+</body>
+</html>
+
+
+
+
+
